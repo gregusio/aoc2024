@@ -1,11 +1,9 @@
-def read_data():
-    file_in_name = "in.txt"
-    with open(file_in_name, "r") as file:
-        return file.read().splitlines()
+from timing import timing
+from read_data import read_data
 
 
-def part1():
-    data = read_data()
+@timing
+def part1(data):
     a = list(map(lambda x: int(x.split("  ")[0]), data))
     b = list(map(lambda x: int(x.split("  ")[1]), data))
     a.sort()
@@ -14,13 +12,14 @@ def part1():
     return sum(c)
 
 
-def part2():
-    data = read_data()
+@timing
+def part2(data):
     a = list(map(lambda x: int(x.split("  ")[0]), data))
     b = list(map(lambda x: int(x.split("  ")[1]), data))
     c = list(map(lambda x: x * b.count(x), a))
     return sum(c)
 
 
-print(f"Part 1 result: {part1()}")
-print(f"Part 2 result: {part2()}")
+data = read_data()
+print(f"Part 1 result: {part1(data)}")
+print(f"Part 2 result: {part2(data)}")
